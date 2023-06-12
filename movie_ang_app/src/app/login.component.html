@@ -1,0 +1,61 @@
+
+<mat-card>
+    <mat-card-content>
+
+        <div class="bootstrap-wrapper" >
+            <div class="container mt" >
+                <div class="row" > 
+                    <div class="col-md-6 offset-md-3">
+                        <div class="container text-center"  >
+                            <img 
+                            style="width:150px; height:150px;"
+                            class="img-fluid" src="/assets/lock.jpg" alt="">
+                        
+                            <h1 class="text-center">Login Here !</h1>
+        
+                        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                            <mat-form-field class="full-width">
+                                <mat-label>Username</mat-label>
+                                <input
+                                [(ngModel)]="credentials.loginId"
+                                required
+                                name="username" 
+                                type="text" 
+                                matInput>
+                            </mat-form-field>
+                            <mat-form-field class="full-width">
+                                <mat-label>Password</mat-label>
+                                <input
+                                [(ngModel)]="credentials.password"
+                                required
+                                name="password"
+                                type="password" matInput>
+                            </mat-form-field>
+        
+                            <div class="container text-cen">
+                                <button type="submit" mat-raised-button color="primary">
+                                    Login
+                                </button>
+                                <button style="margin-left:10px;" type="reset" mat-raised-button color="accent">
+                                    Reset
+                                </button>
+                            
+                            </div>
+                        </form>
+        
+                        <br>
+                        <button style="margin-left:10px;" type="reset" mat-raised-button>
+                            <a [routerLink]="['register']"> Sign Up</a>
+                        </button>
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                       
+                            <a [routerLink]="['forget']"> Forget Password?</a>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+  </mat-card>
+

@@ -1,0 +1,66 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle"></mat-icon>
+ 
+                
+                    <h1 class="text-center">Provide your login Id </h1>
+
+                <form (ngSubmit)="onSubmit(form)" #form="ngForm" *ngIf="update===false">
+                    <mat-form-field class="full-width">
+                        <mat-label>LoginID</mat-label>
+                        <input
+                        [(ngModel)]="credentials.loginId"
+                        required
+                        name="loginId" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+             
+
+                    <div class="container text-cen">
+                        <button type="submit" mat-raised-button color="primary">
+                            Check to proceed
+                        </button>
+                       
+                    </div>
+                </form>
+                
+
+                <form (ngSubmit)="Secret(question)" #question="ngForm" *ngIf="update===true">
+                    <mat-form-field class="full-width">
+                        <mat-label>Question</mat-label>
+                        <input
+                        [(ngModel)]="question_given"
+                        required
+                        name="question_given" 
+                        type="text" 
+                        readonly=""
+                        matInput>
+                    </mat-form-field>
+                        <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Answer</mat-label>
+                        <input
+                        [(ngModel)]="answer_taken"
+                        required
+                        name="answer_taken" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+             
+
+                    <div class="container text-cen">
+                        <button type="submit" mat-raised-button color="primary">
+                            Confirm to change password
+                        </button>
+                       
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

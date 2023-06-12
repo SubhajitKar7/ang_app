@@ -1,0 +1,249 @@
+<h1>Book Component</h1>
+
+    <mat-expansion-panel *ngIf="RoleCheck()==='admin'"  style="background-color: purple">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+         Add Movie
+        </mat-panel-title>
+        
+      </mat-expansion-panel-header>
+     
+   <div class="movie_id">
+      <mat-form-field>
+          <mat-label>Enter Movie ID</mat-label>
+          <input matInput placeholder="enter ID" name="movieId" [(ngModel)]="movieObj.movieId" required>
+        
+        </mat-form-field>
+   </div>
+
+
+ <div class="movie_Name">
+    <mat-form-field>
+        <mat-label>Enter Movie Name</mat-label>
+        <input matInput placeholder="enter Name" name="movieName" [(ngModel)]="movieObj.movieName" required>
+       
+      </mat-form-field>
+ </div>
+
+ <div class="theatre_Name">
+    <mat-form-field>
+        <mat-label>Enter Theatre Name</mat-label>
+        <input matInput placeholder="enter Name" name="theatreName" [(ngModel)]="movieObj.theatreName" required>
+       
+      </mat-form-field>
+ </div>
+
+ <div class="total_seat">
+    <mat-form-field>
+        <mat-label>Enter Total Seat</mat-label>
+        <input matInput placeholder="enter price" name="totalSeat" [(ngModel)]="movieObj.totalSeat" required>
+      
+      </mat-form-field>
+ </div>
+
+ <div class="seat_available">
+    <mat-form-field>
+        <mat-label>Enter Seat Available</mat-label>
+        <input matInput placeholder="enter price" name="seatAvailable" [(ngModel)]="movieObj.seatAvailable" required>
+      
+      </mat-form-field>
+ </div>
+
+ <div class="seat_booked">
+    <mat-form-field>
+        <mat-label>Enter seat Booked</mat-label>
+        <input matInput placeholder="enter price" name="seatBooked" [(ngModel)]="movieObj.seatBooked" required>
+      
+      </mat-form-field>
+ </div>
+
+ <div class="status">
+    <mat-form-field>
+        <mat-label>Enter Status</mat-label>
+        <input matInput placeholder="enter status" name="status" [(ngModel)]="movieObj.status" required>
+       
+      </mat-form-field>
+ </div>
+
+
+ <mat-action-row>
+     <div class="container-fluid padding">
+         <div class="row">
+            <div class="example-button-container">
+                <button (click)="AddMovie()" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                  <mat-icon>plus_one</mat-icon>
+                </button>
+         </div>
+     </div>
+     </div>
+ </mat-action-row>
+    </mat-expansion-panel>
+<br>
+    
+
+  <br><br>
+
+ 
+  <mat-form-field >
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search movie..." #input>
+</mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #empTbSort="matSort" class="make-gold">
+
+  
+    <ng-container matColumnDef="movieId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header >Movie ID </th>
+      <td mat-cell *matCellDef="let movieObj">{{movieObj.movieId}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="movieName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Movie Name </th>
+      <td mat-cell *matCellDef="let movieObj"> {{movieObj.movieName}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="theatreName">
+      <th mat-header-cell *matHeaderCellDef >Theatre Name</th>
+      <td mat-cell *matCellDef="let movieObj"> {{movieObj.theatreName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="totalSeat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Seat</th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.totalSeat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="seatAvailable">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Seat Available</th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.seatAvailable}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="seatBooked">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Seat Booked </th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.seatBooked}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" >
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let movieObj">
+            
+           <button  *ngIf="RoleCheck()==='admin'" (click)="DeleteMovie(movieObj.movieId)" color="warn" mat-raised-button  aria-label="Example icon button with a delete icon">
+            Delete
+              </button>
+
+              <button  *ngIf="RoleCheck()==='admin'" (click)="UpdateMovie(movieObj.movieId)" color="accent" mat-raised-button  aria-label="Example icon button with a delete icon">
+                Update
+                  </button>
+           
+           
+                <button *ngIf="movieObj.seatAvailable>0" (click)="ToBooking()"color="link" mat-raised-button aria-label="Example icon button with a delete icon">
+                   Book
+                  </button>
+
+            
+        </td>
+             
+
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator [pageSizeOptions]="[2, 4,6]" 
+  showFirstLastButtons></mat-paginator>
+
+  
+  <br>
+  
+  <br>
+
+  <div *ngIf="RoleCheck()==='admin'">
+  <h3>Search By ID</h3>
+
+  <input type="number" [(ngModel)]="movie1.movieId">
+  <button (click)="ViewMovieById()" mat-fab color="accent" aria-label="Example icon button with a bookmark icon">
+    <mat-icon>bookmark</mat-icon>
+  </button>
+
+  <table mat-table [dataSource]="movieList" class="mat-elevation-z8" class="make-gold">
+
+  
+    <ng-container matColumnDef="movieId">
+      <th mat-header-cell *matHeaderCellDef >Movie ID </th>
+      <td mat-cell *matCellDef="let item">{{item.movieId}}</td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="movieName">
+      <th mat-header-cell *matHeaderCellDef >Movie Name </th>
+      <td mat-cell *matCellDef="let movieObj"> {{movieObj.movieName}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="theatreName">
+      <th mat-header-cell *matHeaderCellDef >Theatre Name</th>
+      <td mat-cell *matCellDef="let movieObj"> {{movieObj.theatreName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="totalSeat">
+        <th mat-header-cell *matHeaderCellDef >Total Seat</th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.totalSeat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="seatAvailable">
+        <th mat-header-cell *matHeaderCellDef >Seat Available</th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.seatAvailable}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="seatBooked">
+        <th mat-header-cell *matHeaderCellDef >Seat Booked </th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.seatBooked}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let movieObj"> {{movieObj.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" >
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let movieObj">
+
+           <button  *ngIf="RoleCheck()==='admin'" (click)="DeleteMovie(movieObj.movieId)" color="warn" mat-raised-button aria-label="Example icon button with a delete icon">
+            Delete
+              </button>
+        
+            <div>
+                <button *ngIf="movieObj.seatAvailable>0"  (click)="ToBooking()" color="link" mat-raised-button aria-label="Example icon button with a delete icon">
+                    Book
+                  </button>
+            </div>
+        </td>
+             
+
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+   
+   
+
+  </table>
+
+  <button  mat-raised-button ><a [routerLink]="['/ticket',movie1.movieId]">View Transactions</a></button>
+</div>
+
+  <br>
+  
+  <br>
+
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  

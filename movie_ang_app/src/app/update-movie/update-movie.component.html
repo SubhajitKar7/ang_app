@@ -1,0 +1,78 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       Update Movie
+      </mat-panel-title>
+      
+    </mat-expansion-panel-header>
+   
+ <div class="movie_id">
+    <mat-form-field>
+        <mat-label>Enter Movie ID</mat-label>
+        <input matInput placeholder="enter ID" name="movieId" [(ngModel)]="movieObj.movieId" required>
+      
+      </mat-form-field>
+ </div>
+
+
+<div class="movie_Name">
+  <mat-form-field>
+      <mat-label>Enter Movie Name</mat-label>
+      <input matInput placeholder="enter Name" name="movieName" [(ngModel)]="movieObj.movieName" required>
+     
+    </mat-form-field>
+</div>
+
+<div class="theatre_Name">
+  <mat-form-field>
+      <mat-label>Enter Theatre Name</mat-label>
+      <input matInput placeholder="enter Name" name="theatreName" [(ngModel)]="movieObj.theatreName" required>
+     
+    </mat-form-field>
+</div>
+
+<div class="total_seat">
+  <mat-form-field>
+      <mat-label>Enter Total Seat</mat-label>
+      <input matInput placeholder="enter price" name="totalSeat" [(ngModel)]="movieObj.totalSeat" required>
+    
+    </mat-form-field>
+</div>
+
+<div class="seat_available">
+  <mat-form-field>
+      <mat-label>Enter Seat Available</mat-label>
+      <input matInput placeholder="enter price" name="seatAvailable" [(ngModel)]="movieObj.seatAvailable" required>
+    
+    </mat-form-field>
+</div>
+
+<div class="seat_booked">
+  <mat-form-field>
+      <mat-label>Enter seat Booked</mat-label>
+      <input matInput placeholder="enter price" name="seatBooked" [(ngModel)]="movieObj.seatBooked" required>
+    
+    </mat-form-field>
+</div>
+
+<div class="status">
+  <mat-form-field>
+      <mat-label>Enter Status</mat-label>
+      <input matInput placeholder="enter status" name="status" [(ngModel)]="movieObj.status" required>
+     
+    </mat-form-field>
+</div>
+
+<mat-action-row>
+    <div class="container-fluid padding">
+        <div class="row">
+           <div class="example-button-container">
+               <button (click)="onSubmit()" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                 <mat-icon>plus_one</mat-icon>
+               </button>
+        </div>
+    </div>
+    </div>
+ </mat-action-row>
+
+  </mat-expansion-panel>

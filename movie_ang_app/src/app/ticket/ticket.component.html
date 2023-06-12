@@ -1,0 +1,113 @@
+<h1>Ticket</h1>
+
+
+
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       Book Ticket
+      </mat-panel-title>
+      
+    </mat-expansion-panel-header>
+   
+ <div class="movie_name">
+    <mat-form-field>
+        <mat-label>Enter Movie Name</mat-label>
+        <input matInput placeholder="enter name" name="movieName" [(ngModel)]="booking.movie_name" required>
+       <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+      </mat-form-field>
+ </div>
+
+
+<div class="theatre_Name">
+  <mat-form-field>
+      <mat-label>Enter Theatre Name</mat-label>
+      <input matInput placeholder="enter Name" name="theatreName" [(ngModel)]="booking.theatre_name" required>
+     <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+    </mat-form-field>
+</div>
+
+
+<div class="seat_number">
+    <mat-form-field>
+        <mat-label>Enter Seat Number</mat-label>
+        <input matInput placeholder="enter Name" name="seatNumber" [(ngModel)]="booking.seat_number" required>
+       <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+      </mat-form-field>
+  </div>
+
+  
+<div class="tickets">
+    <mat-form-field>
+        <mat-label>Enter Tickets </mat-label>
+        <input matInput placeholder="enter Name" name="tickets" [(ngModel)]="booking.tickets" required>
+       <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>-->
+      </mat-form-field>
+  </div>
+  
+
+
+<mat-action-row>
+   <div class="container-fluid padding">
+       <div class="row">
+          <div class="example-button-container">
+              <button (click)="BookTicket(booking.movie_name)" mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+                <mat-icon>plus_one</mat-icon>
+              </button>
+       </div>
+   </div>
+   </div>
+</mat-action-row>
+  </mat-expansion-panel>
+<br>
+<br>
+    *****************************************************************************************
+    <br>
+   
+  
+  <table  mat-table [dataSource]="bookingList" class="mat-elevation-z8" *ngIf="bookingList.length>0 && RoleCheck()==='admin'">
+
+  
+    <ng-container matColumnDef="transactionId">
+      <th mat-header-cell *matHeaderCellDef >Transaction ID </th>
+      <td mat-cell *matCellDef="let tran">{{tran.transactionId}}  </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="movieName">
+      <th mat-header-cell *matHeaderCellDef >Movie Name </th>
+      <td mat-cell *matCellDef="let tran"> {{tran.movieName}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="availableSeat">
+      <th mat-header-cell *matHeaderCellDef >Available Seat</th>
+      <td mat-cell *matCellDef="let tran"> {{tran.availableSeat}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="bookedSeat">
+        <th mat-header-cell *matHeaderCellDef >Booked Seat</th>
+        <td mat-cell *matCellDef="let tran"> {{tran.bookedSeat}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="totalSeat">
+        <th mat-header-cell *matHeaderCellDef >Total Seat </th>
+        <td mat-cell *matCellDef="let tran"> {{tran.totalSeat}} </td>
+      </ng-container>
+      
+    
+      <ng-container matColumnDef="theatreName">
+        <th mat-header-cell *matHeaderCellDef >Theatre Name </th>
+        <td mat-cell *matCellDef="let tran"> {{tran.theatreName}} </td>
+      </ng-container>
+
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+ 
+  <br>
+  <hr><hr>
+  <br>

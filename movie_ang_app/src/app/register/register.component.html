@@ -1,0 +1,128 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle"></mat-icon>
+ 
+                
+                    <h1 class="text-center">Register </h1>
+
+                <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                    <mat-form-field class="full-width">
+                        <mat-label>LoginID</mat-label>
+                        <input
+                        [(ngModel)]="credentials.loginId"
+                        required
+                        name="loginId" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Firstname</mat-label>
+                        <input
+                        [(ngModel)]="credentials.firstname"
+                        required
+                        name="firstname" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Lastname</mat-label>
+                        <input
+                        [(ngModel)]="credentials.lastname"
+                        required
+                        name="lastname" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Password</mat-label>
+                        <input
+                        [(ngModel)]="credentials.password"
+                        required
+                        name="password" 
+                        type="password" 
+                        matInput>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Confirm Password</mat-label>
+                        <input      
+                        [(ngModel)]="credentials.confirmpassword"          
+                        required
+                        name="confirmpassword" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Role</mat-label>
+                        <input
+                        [(ngModel)]="credentials.role"
+                        required
+                        name="role" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input
+                        [(ngModel)]="credentials.email"
+                        required
+                        name="email" 
+                        type="text" 
+                        email
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Question</mat-label>
+                        <input
+                        [(ngModel)]="credentials.question"
+                        required
+                        name="question" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Answer</mat-label>
+                        <input
+                        [(ngModel)]="credentials.answer"
+                        required
+                        name="answer" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Contact Number</mat-label>
+                        <input
+                        [(ngModel)]="credentials.contact"
+                        required
+                        name="contact" 
+                        type="text" 
+                        matInput>
+                    </mat-form-field>
+                    <br>
+
+                    <div class="container text-cen">
+                        <button type="submit" mat-raised-button color="primary">
+                            Submit
+                        </button>
+                        <button style="margin-left:10px;" type="reset" mat-raised-button color="accent">
+                            Reset
+                        </button>
+                       
+                    </div>
+                </form>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

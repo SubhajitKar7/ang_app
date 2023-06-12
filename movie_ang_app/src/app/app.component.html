@@ -1,0 +1,22 @@
+<div class="im">
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1>Movie App </h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/movie'"> Movies </a>
+       <!-- <a mat-button [routerLink]="'/ticket'"> Book Ticket </a>-->
+       <a mat-button [routerLink]="'/booking'">  Bookings </a>
+       
+        <a mat-button *ngIf="RoleCheck()==='admin'" [routerLink]="'/user'"> Users </a>
+      
+      </div>
+      <span class="example-fill-remaining-space"> <a mat-button (click)="logout()">Logout  </a></span> 
+    </mat-toolbar-row>
+  
+
+  </mat-toolbar>
+ 
+<router-outlet></router-outlet>
+
+</div>
